@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>TravelBuddy Cabs | Campus Mobility</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#"
+          ><span class="brand-mark">T</span
+          ><span>TravelBuddy<small>CAMPUS MOBILITY</small></span></a
+        >
+        <div class="nav-label">WORKSPACE</div>
+        <button class="nav-item active" data-view="overview">
+          <span>▦</span> Overview
+        </button>
+        <button class="nav-item" data-view="reservations">
+          <span>▣</span> Reservations
+        </button>
+        <button class="nav-item" data-view="passengers">
+          <span>♙</span> Passengers
+        </button>
+        <button class="nav-item" data-view="shuttles">
+          <span>⇄</span> Shuttle routes
+        </button>
+        <div class="sidebar-bottom">
+          <div class="help-card">
+            <div class="help-icon">✦</div>
+            <b>Need a hand?</b>
+            <p>Manage campus rides with ease.</p>
+            <span>TravelBuddy support</span>
+          </div>
+          <div class="profile">
+            <div class="avatar">HA</div>
+            <div><b>Harsha Admin</b><small>Administrator</small></div>
+            <span class="dots">•••</span>
+          </div>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <div class="eyebrow">CAMPUS TRANSPORT MANAGEMENT</div>
+            <h1 id="page-title">Overview</h1>
+          </div>
+          <div class="top-actions">
+            <span class="live-dot">System operational</span
+            ><button class="primary" id="quick-book">＋ New reservation</button>
+          </div>
+        </header>
+        <section class="view active" id="overview-view">
+          <div class="welcome">
+            <div>
+              <span class="welcome-tag">YOUR CAMPUS, CONNECTED</span>
+              <h2>Good day, Harsha <span>✦</span></h2>
+              <p>Here’s what’s happening with your campus shuttles today.</p>
+            </div>
+            <div class="welcome-art">
+              <div class="sun"></div>
+              <div class="road"></div>
+              <div class="bus">BUS</div>
+            </div>
+          </div>
+          <div class="stats">
+            <article class="stat-card">
+              <div class="stat-top">
+                <span>Total passengers</span
+                ><span class="stat-icon blue">♙</span>
+              </div>
+              <strong id="stat-passengers">0</strong
+              ><small>Registered in the system</small>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top">
+                <span>Shuttle routes</span
+                ><span class="stat-icon violet">⇄</span>
+              </div>
+              <strong id="stat-shuttles">0</strong
+              ><small>Available campus services</small>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top">
+                <span>Active reservations</span
+                ><span class="stat-icon green">▣</span>
+              </div>
+              <strong id="stat-active">0</strong
+              ><small>Confirmed bookings</small>
+            </article>
+            <article class="stat-card">
+              <div class="stat-top">
+                <span>Cancelled rides</span
+                ><span class="stat-icon orange">↶</span>
+              </div>
+              <strong id="stat-cancelled">0</strong
+              ><small>Cancelled reservations</small>
+            </article>
+          </div>
+          <div class="content-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <div>
+                  <h3>Recent reservations</h3>
+                  <p>Latest passenger booking activity</p>
+                </div>
+                <button class="text-button" data-go="reservations">
+                  View all ↗
+                </button>
+              </div>
+              <div id="recent-list" class="recent-list"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-head">
+                <div>
+                  <h3>Quick actions</h3>
+                  <p>Common management tasks</p>
+                </div>
+              </div>
+              <button class="quick-action" data-modal="reservation">
+                <span class="qa-icon peach">＋</span
+                ><span
+                  ><b>Create reservation</b
+                  ><small>Book a seat for a passenger</small></span
+                ><i>↗</i></button
+              ><button class="quick-action" data-modal="passenger">
+                <span class="qa-icon sky">♙</span
+                ><span
+                  ><b>Add passenger</b
+                  ><small>Register a new passenger</small></span
+                ><i>↗</i></button
+              ><button class="quick-action" data-modal="shuttle">
+                <span class="qa-icon lilac">⇄</span
+                ><span
+                  ><b>Add shuttle route</b
+                  ><small>Create a campus shuttle service</small></span
+                ><i>↗</i>
+              </button>
+              <div class="rule-note">
+                <b>Booking rule</b
+                ><span
+                  >Each passenger can have up to
+                  <strong>3 active reservations</strong>.</span
+                >
+              </div>
+            </section>
+          </div>
+        </section>
+        <section class="view" id="reservations-view">
+          <div class="section-toolbar">
+            <div>
+              <h2>All reservations</h2>
+              <p>Track, search and manage campus ride bookings.</p>
+            </div>
+            <button class="primary" data-modal="reservation">
+              ＋ New reservation
+            </button>
+          </div>
+          <div class="table-tools">
+            <input
+              id="reservation-search"
+              placeholder="Search passenger or shuttle..."
+            /><select id="reservation-status">
+              <option value="">All statuses</option>
+              <option value="active">Active</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+          <div class="panel table-panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>PASSENGER</th>
+                    <th>SHUTTLE</th>
+                    <th>TIME SLOT</th>
+                    <th>BOOKED ON</th>
+                    <th>STATUS</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="reservation-rows"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <section class="view" id="passengers-view">
+          <div class="section-toolbar">
+            <div>
+              <h2>Passengers</h2>
+              <p>Manage registered campus shuttle passengers.</p>
+            </div>
+            <button class="primary" data-modal="passenger">
+              ＋ Add passenger
+            </button>
+          </div>
+          <div class="table-tools">
+            <input
+              id="passenger-search"
+              placeholder="Search name, email or phone..."
+            />
+          </div>
+          <div class="panel table-panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>PASSENGER</th>
+                    <th>EMAIL</th>
+                    <th>PHONE</th>
+                    <th>ACTIVE RIDES</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="passenger-rows"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <section class="view" id="shuttles-view">
+          <div class="section-toolbar">
+            <div>
+              <h2>Shuttle routes</h2>
+              <p>Manage campus routes, schedules and seat capacity.</p>
+            </div>
+            <button class="primary" data-modal="shuttle">＋ Add shuttle</button>
+          </div>
+          <div class="table-tools">
+            <input
+              id="shuttle-search"
+              placeholder="Search shuttle or route..."
+            /><select id="shuttle-slot">
+              <option value="">All time slots</option>
+              <option>Morning</option>
+              <option>Afternoon</option>
+              <option>Evening</option>
+            </select>
+          </div>
+          <div id="shuttle-cards" class="shuttle-grid"></div>
+        </section>
+        <footer>
+          TravelBuddy Cabs <span>•</span> Campus shuttle management
+          <span class="footer-right">Built for smoother campus journeys</span>
+        </footer>
+      </main>
+    </div>
+    <div class="modal-backdrop" id="modal-backdrop">
+      <section class="modal">
+        <button class="modal-close" id="modal-close">×</button>
+        <div class="eyebrow">TRAVELBUDDY CABS</div>
+        <h2 id="modal-title">Create reservation</h2>
+        <p id="modal-subtitle">Fill in the details below to continue.</p>
+        <form id="modal-form">
+          <div id="modal-fields"></div>
+          <div class="modal-actions">
+            <button type="button" class="secondary" id="modal-cancel">
+              Cancel</button
+            ><button class="primary" id="modal-submit">Save details</button>
+          </div>
+        </form>
+      </section>
+    </div>
+    <div id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
